@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Duet Content Generator — Internal Tool</title>
+  <meta name="description" content="Internal content generation tool for Duet couples question cards. Generate social-media slideshow content from the Duet question library." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div id="app">
+    <!-- Header -->
+    <header class="app-header" id="app-header">
+      <div class="header-inner">
+        <div class="header-brand">
+          <div class="brand-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <path d="M14 25.5C14 25.5 3.5 19.25 3.5 11.375C3.5 8.5 5.75 5.25 9.25 5.25C11.5 5.25 13 6.75 14 8C15 6.75 16.5 5.25 18.75 5.25C22.25 5.25 24.5 8.5 24.5 11.375C24.5 19.25 14 25.5 14 25.5Z" fill="url(#heart-gradient)" />
+              <defs>
+                <linearGradient id="heart-gradient" x1="3.5" y1="5.25" x2="24.5" y2="25.5" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ff6b8a" />
+                  <stop offset="1" stop-color="#e84393" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h1 class="brand-title">Duet <span class="brand-accent">Content Generator</span></h1>
+        </div>
+        <div id="library-status" class="library-status"></div>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="app-main" id="app-main">
+      <!-- Generator Form -->
+      <section id="generator-form" class="section-form"></section>
+
+      <!-- Question Results -->
+      <section id="question-results" class="section-results"></section>
+    </main>
+
+    <!-- JSON Upload Modal (hidden by default) -->
+    <div id="upload-modal" class="modal-overlay" hidden>
+      <div class="modal-content">
+        <h2>Upload Question Library</h2>
+        <p class="modal-description">Replace the current question library with a new JSON file.</p>
+        <div class="upload-zone" id="upload-zone">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </svg>
+          <span>Drop JSON file here or <label for="file-input" class="upload-link">browse</label></span>
+          <input type="file" id="file-input" accept=".json" hidden />
+        </div>
+        <div id="upload-error" class="upload-error" hidden></div>
+        <div class="modal-actions">
+          <button id="upload-cancel" class="btn btn-ghost">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Off-screen render container for high-quality PNG export -->
+  <div id="render-container" class="render-container" aria-hidden="true"></div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
